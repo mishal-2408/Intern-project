@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Growvix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 80px;
+            color: white;
+        }
+
+        .contact-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .contact-page-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .contact-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box p {
+            margin: 0;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group.full {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-submit {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-section {
+            background: white;
+            color: #333;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-section h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .faq-item h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .response-message {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .response-message.show {
+            display: block;
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .contact-page-content h1 {
+                font-size: 2rem;
+            }
+
+            .contact-intro {
+                font-size: 1rem;
+            }
+
+            .contact-main {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                gap: 1.2rem;
+            }
+
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-section {
+                padding: 2rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-page {
+                padding-top: 70px;
+            }
+
+            .contact-page-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .contact-intro {
+                font-size: 0.95rem;
+            }
+
+            .contact-main {
+                gap: 2rem;
+            }
+
+            .info-box {
+                padding: 1.5rem;
+            }
+
+            .info-box h3 {
+                font-size: 1.1rem;
+            }
+
+            .info-box p {
+                font-size: 0.9rem;
+            }
+
+            .contact-form {
+                gap: 1rem;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            .form-group {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .form-submit {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .response-message {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .faq-section {
+                padding: 1.5rem;
+            }
+
+            .faq-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .faq-grid {
+                gap: 1.2rem;
+            }
+
+            .faq-item {
+                padding: 1.2rem;
+            }
+
+            .faq-item h4 {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .faq-item p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-main {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">
+            <span class="loading-percentage">0</span>%
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon image-only">
+                    <img src="assets/growvix-logo.png" alt="Growvix logo" class="logo-img">
+                </div>
+                <h2>Growvix</h2>
+            </div>
+            <ul class="nav-links">
+                
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="contact.html" class="nav-link cta-btn">Contact Us</a></li>
+                <li><a href="home.html#robotWelcome" class="nav-link exit-btn">Back to Robot 🤖</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-page">
+        <div class="contact-page-content">
+            <h1>Get In Touch</h1>
+            <div class="contact-intro">
+                <p>Have a project in mind? Let's talk! We'd love to hear about your business and discuss how Growvix can help.</p>
+            </div>
+
+            <div class="contact-main">
+                <div class="contact-info">
+                    <div class="info-box">
+                        <h3>📍 Location</h3>
+                        <p>123 Marketing Street<br>Digital City, DC 12345<br>United States</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>📞 Phone</h3>
+                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>✉️ Email</h3>
+                        <p>hello@growvix.com<br>support@growvix.com</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>🕐 Business Hours</h3>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM<br>Sun: Closed</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Full Name" required>
+                        <input type="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Company Name">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group full">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group full">
+                        <textarea placeholder="Tell us about your project and what you're looking to achieve..." rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                    <div class="response-message" id="responseMessage">
+                        ✅ Thank you for your message! We'll get back to you within 24 hours.
+                    </div>
+                </form>
+            </div>
+
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>❓ What services do you offer?</h4>
+                        <p>We offer a comprehensive range of digital marketing services including SEO, SEM, social media management, content creation, web design, brand strategy, and email marketing.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>💼 How long do projects typically take?</h4>
+                        <p>Project timelines vary based on complexity and scope. Most projects range from 1-6 months. We'll provide a detailed timeline after our initial consultation.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>💰 What is your pricing?</h4>
+                        <p>Our pricing is flexible and tailored to your specific needs and budget. We offer starter, professional, and enterprise plans with custom solutions available.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>🤝 Do you work with small businesses?</h4>
+                        <p>Absolutely! We work with businesses of all sizes, from startups to enterprises. We have solutions and budgets to fit any business scale.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>📊 How do you measure success?</h4>
+                        <p>We track KPIs that matter to your business. We provide detailed reports showing ROI, conversion rates, traffic growth, and other relevant metrics.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>🔄 Do you offer ongoing support?</h4>
+                        <p>Yes! We offer ongoing support and optimization services. Most of our clients maintain long-term partnerships with us for continuous growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Growvix</h4>
+                    <p>Leading digital marketing agency specializing in transforming businesses through innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Growvix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const responseMessage = document.getElementById('responseMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                responseMessage.classList.add('show');
+                contactForm.reset();
+                setTimeout(() => {
+                    responseMessage.classList.remove('show');
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews & Success Stories - Growvix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .reviews-page {
+            background: radial-gradient(circle at 75% 25%, rgba(102,126,234,0.1), transparent 20%),
+                        linear-gradient(135deg, #0f1724 0%, #1f2340 50%, #2b1b3b 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 88px;
+            color: #e6eefc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-page::before {
+            content: '';
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245,87,108,0.14), transparent 40%);
+            left: -150px;
+            bottom: -150px;
+            filter: blur(85px);
+            z-index: 0;
+        }
+
+        .reviews-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reviews-page-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+            text-align: center;
+            color: white;
+        }
+
+        .reviews-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+            color: rgba(230,238,252,0.8);
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .review-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            backdrop-filter: blur(10px);
+            color: #e6eefc;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .review-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(102,126,234,0.15);
+            box-shadow: 0 16px 48px rgba(102,126,234,0.2);
+        }
+
+        .review-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 8px rgba(102,126,234,0.3));
+        }
+
+        .review-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-item p {
+            opacity: 0.9;
+            line-height: 1.8;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .metrics-grid {
+            background: white;
+            color: #333;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .metrics-grid h2 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .metrics-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .achievements-section {
+            background: white;
+            color: #333;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievements-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievement-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .achievement-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-item p {
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .reviews-page-content h1 {
+                font-size: 2rem;
+            }
+
+            .reviews-intro {
+                font-size: 1rem;
+            }
+
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+
+            .review-item {
+                padding: 2rem;
+            }
+
+            .review-number {
+                font-size: 2.5rem;
+            }
+
+            .review-item h3 {
+                font-size: 1.3rem;
+            }
+
+            .metrics-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metric-card {
+                padding: 1.5rem;
+            }
+
+            .metric-value {
+                font-size: 2rem;
+            }
+
+            .achievement-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reviews-page {
+                padding-top: 70px;
+            }
+
+            .reviews-page-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .reviews-intro {
+                font-size: 0.95rem;
+            }
+
+            .reviews-container {
+                gap: 1.5rem;
+            }
+
+            .review-item {
+                padding: 1.5rem;
+                flex-direction: column;
+            }
+
+            .review-number {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .review-item h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .review-item p {
+                font-size: 0.9rem;
+            }
+
+            .metrics-grid {
+                padding: 2rem 1.5rem;
+            }
+
+            .metrics-grid h2 {
+                font-size: 1.3rem;
+            }
+
+            .metrics-items {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .metric-card {
+                padding: 1.2rem;
+            }
+
+            .metric-value {
+                font-size: 1.8rem;
+            }
+
+            .metric-label {
+                font-size: 0.85rem;
+            }
+
+            .achievements-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .achievements-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .achievement-item {
+                padding: 1.2rem;
+            }
+
+            .achievement-item h4 {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .achievement-item p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">
+            <span class="loading-percentage">0</span>%
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon image-only">
+                    <img src="assets/growvix-logo.png" alt="Growvix logo" class="logo-img">
+                </div>
+                <h2>Growvix</h2>
+            </div>
+            <ul class="nav-links">
+                
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="contact.html" class="nav-link cta-btn">Contact Us</a></li>
+                <li><a href="home.html#robotWelcome" class="nav-link exit-btn">Back to Robot 🤖</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reviews-page">
+        <div class="reviews-page-content">
+            <h1>Success Stories & Reviews</h1>
+            <div class="reviews-intro">
+                <p>Real results, real clients, real impact. Explore our track record of success.</p>
+            </div>
+
+            <div class="reviews-container">
+                <div class="review-item">
+                    <div class="review-number">📈</div>
+                    <h3>Revenue Growth</h3>
+                    <p>Helped our clients increase their revenue by an average of 350% through strategic digital marketing initiatives and optimization.</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-number">🏆</div>
+                    <h3>Industry Awards</h3>
+                    <p>Our campaigns have been recognized with 20+ industry awards for innovation, creativity, and effectiveness in digital marketing.</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-number">😊</div>
+                    <h3>Client Satisfaction</h3>
+                    <p>Maintaining a 98% client satisfaction rate with long-term partnerships and consistent delivery of exceptional results.</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-number">🚀</div>
+                    <h3>Brand Transformations</h3>
+                    <p>Successfully completed 500+ brand transformation projects, helping businesses find their unique voice and market position.</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-number">💼</div>
+                    <h3>Client Retention</h3>
+                    <p>95% of our clients renew their contracts year after year, a testament to the lasting value we provide.</p>
+                </div>
+
+                <div class="review-item">
+                    <div class="review-number">⭐</div>
+                    <h3>Quality Excellence</h3>
+                    <p>Consistently delivering premium quality work that exceeds expectations and drives measurable business results.</p>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <h2>By The Numbers</h2>
+                <div class="metrics-items">
+                    <div class="metric-card">
+                        <div class="metric-value">150+</div>
+                        <div class="metric-label">Projects Completed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">50+</div>
+                        <div class="metric-label">Happy Clients</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">8</div>
+                        <div class="metric-label">Years of Excellence</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">98%</div>
+                        <div class="metric-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievements-section">
+                <h2>Our Key Achievements</h2>
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <h4>🥇 Best Digital Marketing Agency 2025</h4>
+                        <p>Recognized as the best digital marketing agency for innovation and customer satisfaction.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h4>🎯 SEO Excellence Award</h4>
+                        <p>Awarded for outstanding SEO results and achieving top rankings for competitive keywords.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h4>💡 Innovation in Marketing</h4>
+                        <p>Recognized for pioneering new approaches in digital marketing and content strategy.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h4>🌟 Client Choice Award</h4>
+                        <p>Voted by clients as their top choice for digital marketing services three years running.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h4>📊 Data-Driven Marketing Excellence</h4>
+                        <p>Recognized for our analytical approach and delivering measurable ROI for clients.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h4>🚀 Fastest Growing Agency</h4>
+                        <p>Named as one of the fastest-growing digital marketing agencies in the region.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Growvix</h4>
+                    <p>Leading digital marketing agency specializing in transforming businesses through innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Growvix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Growvix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Rich hero + about styles */
+        .about-page {
+            background: radial-gradient(circle at 10% 10%, rgba(118,75,162,0.12), transparent 10%),
+                        linear-gradient(135deg, #0f1724 0%, #1f2340 45%, #2b1b3b 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 88px;
+            color: #e6eefc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* decorative blur shapes */
+        .about-page::before,
+        .about-page::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .about-page::before {
+            width: 420px;
+            height: 420px;
+            left: -80px;
+            top: -60px;
+            background: radial-gradient(circle, rgba(102,126,234,0.35), transparent 40%);
+        }
+
+        .about-page::after {
+            width: 360px;
+            height: 360px;
+            right: -80px;
+            bottom: -60px;
+            background: radial-gradient(circle, rgba(245,87,108,0.25), transparent 40%);
+        }
+
+        .about-page-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .hero-copy h1 {
+            font-size: 3.2rem;
+            margin: 0 0 12px 0;
+            color: #ffffff;
+            line-height: 1.05;
+        }
+
+        .hero-copy p {
+            color: rgba(230,238,252,0.9);
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #e6eefc;
+            border: 1px solid rgba(230,238,252,0.12);
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .hero-widget {
+            background: linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.08));
+            padding: 18px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(2,6,23,0.5);
+            color: #fff;
+        }
+
+        .hero-widget h4 { margin: 0 0 8px 0; color: #ffd6d6 }
+
+        .about-section {
+            background: rgba(255,255,255,0.04);
+            padding: 2.4rem;
+            border-radius: 12px;
+            margin-bottom: 1.6rem;
+            box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+            border-left: 4px solid rgba(102,126,234,0.15);
+        }
+
+        .about-section h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-section p { color: rgba(230,238,252,0.9); line-height:1.8 }
+
+        .about-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            color: #fff;
+            padding: 1.6rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(2,6,23,0.55);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .stat-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(2,6,23,0.6); }
+
+        .stat-card h3 { font-size: 2rem; margin-bottom: 6px }
+
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; margin-top:1.2rem }
+
+        .value-card { background: rgba(255,255,255,0.02); border-radius:10px; padding:1.2rem; color: rgba(230,238,252,0.9); border:1px solid rgba(255,255,255,0.03) }
+
+        @media (max-width: 900px) {
+            .about-hero { grid-template-columns: 1fr; text-align: center }
+            .hero-cta { justify-content: center }
+        }
+
+        @media (max-width: 480px) {
+            .hero-copy h1 { font-size: 1.6rem }
+            .about-page { padding-top: 70px }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">
+            <span class="loading-percentage">0</span>%
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon image-only">
+                    <img src="assets/growvix-logo.png" alt="Growvix logo" class="logo-img">
+                </div>
+                <h2>Growvix</h2>
+            </div>
+            <ul class="nav-links">
+                
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="contact.html" class="nav-link cta-btn">Contact Us</a></li>
+                <li><a href="home.html#robotWelcome" class="nav-link exit-btn">Back to Robot 🤖</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="about-page">
+        <div class="about-page-content">
+            <div class="about-hero">
+                <div class="hero-copy">
+                    <h1>About Growvix</h1>
+                    <p>We blend creativity and data to build digital experiences that grow brands.</p>
+                    <div class="hero-cta">
+                        <button class="btn-ghost">Our Work</button>
+                        <button class="btn-ghost">Contact Sales</button>
+                    </div>
+                </div>
+                <div class="hero-widget">
+                    <h4>Quick Facts</h4>
+                    <p><strong>150+</strong> Projects • <strong>50+</strong> Clients • <strong>8</strong> Years</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Who We Are</h2>
+                <p>Growvix is a leading digital marketing agency dedicated to transforming businesses through innovative, data-driven marketing solutions. With over 8 years of industry experience, our talented team has successfully helped more than 50 clients achieve their digital goals.</p>
+                <p>We believe in the power of strategic thinking combined with creative excellence. Our approach is simple: understand your business, develop a comprehensive strategy, execute with precision, and deliver measurable results that exceed expectations.</p>
+            </div>
+
+            <div class="about-stats-grid">
+                <div class="stat-card">
+                    <h3>150+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <h3>50+</h3>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-card">
+                    <h3>8 Years</h3>
+                    <p>In Business</p>
+                </div>
+                <div class="stat-card">
+                    <h3>98%</h3>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>To empower businesses of all sizes by delivering cutting-edge digital marketing solutions that drive growth, increase revenue, and build lasting brand loyalty. We are committed to being our clients' trusted partner in their digital transformation journey.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3>Excellence</h3>
+                        <p>We strive for excellence in every project, ensuring the highest quality standards.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovation</h3>
+                        <p>We embrace new technologies and creative thinking to stay ahead of the curve.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Integrity</h3>
+                        <p>We conduct business with honesty, transparency, and ethical practices.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">📈</div>
+                        <h3>Growth</h3>
+                        <p>We focus on sustainable growth for our clients and continuous improvement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Why Choose Growvix?</h2>
+                <p><strong>Expertise:</strong> Our team consists of seasoned professionals with expertise in SEO, SEM, social media, content creation, web design, and brand strategy.</p>
+                <p><strong>Results-Oriented:</strong> We don't believe in vanity metrics. We focus on KPIs that matter to your business and deliver measurable ROI.</p>
+                <p><strong>Custom Solutions:</strong> Every business is unique. We develop tailored strategies that align with your specific goals and budget.</p>
+                <p><strong>Transparent Communication:</strong> We keep you updated every step of the way with regular reports and strategic reviews.</p>
+                <p><strong>Dedicated Support:</strong> Your success is our success. Our team is committed to your growth and available whenever you need us.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Growvix</h4>
+                    <p>Leading digital marketing agency specializing in transforming businesses through innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Growvix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

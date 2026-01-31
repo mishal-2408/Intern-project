@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Growvix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .experience-page {
+            background: radial-gradient(circle at 80% 20%, rgba(245,87,108,0.1), transparent 20%),
+                        linear-gradient(135deg, #0f1724 0%, #1f2340 50%, #2b1b3b 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 88px;
+            color: #e6eefc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-page::before {
+            content: '';
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102,126,234,0.12), transparent 40%);
+            left: -80px;
+            bottom: -100px;
+            filter: blur(70px);
+            z-index: 0;
+        }
+
+        .experience-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .experience-page-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+            text-align: center;
+            color: white;
+        }
+
+        .experience-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+            color: rgba(230,238,252,0.8);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .expertise-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-8px);
+            border-color: rgba(102,126,234,0.2);
+            box-shadow: 0 12px 30px rgba(102,126,234,0.15);
+        }
+
+        .expertise-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+            color: rgba(102, 126, 234, 0.5);
+        }
+
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .expertise-card p {
+            opacity: 0.95;
+            line-height: 1.6;
+            color: rgba(230, 238, 252, 0.85);
+        }
+
+        .expertise-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .expertise-card li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(230, 238, 252, 0.8);
+        }
+
+        .expertise-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .experience-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            color: rgba(230,238,252,0.9);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .experience-section h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .experience-section p {
+            color: rgba(230,238,252,0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background: rgba(255,255,255,0.02);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid rgba(102,126,234,0.2);
+        }
+
+        .skill-item h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(230,238,252,0.7);
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .experience-page-content h1 {
+                font-size: 2rem;
+            }
+
+            .experience-intro {
+                font-size: 1rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-card {
+                padding: 1.8rem;
+            }
+
+            .expertise-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-section {
+                padding: 2rem;
+            }
+
+            .experience-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .experience-page {
+                padding-top: 70px;
+            }
+
+            .experience-page-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .experience-intro {
+                font-size: 0.95rem;
+            }
+
+            .expertise-grid {
+                gap: 1.5rem;
+            }
+
+            .expertise-card {
+                padding: 1.5rem;
+            }
+
+            .expertise-number {
+                font-size: 2rem;
+            }
+
+            .expertise-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .expertise-card p {
+                font-size: 0.9rem;
+            }
+
+            .expertise-card ul {
+                font-size: 0.9rem;
+            }
+
+            .expertise-card li {
+                margin: 0.4rem 0;
+            }
+
+            .experience-section {
+                padding: 1.5rem;
+            }
+
+            .experience-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .experience-section p {
+                font-size: 0.95rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .skill-item {
+                padding: 1rem;
+            }
+
+            .skill-item h4 {
+                font-size: 1rem;
+            }
+
+            .skill-item p {
+                font-size: 0.85rem;
+            }
+
+            ol {
+                padding-left: 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">
+            <span class="loading-percentage">0</span>%
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon image-only">
+                    <img src="assets/growvix-logo.png" alt="Growvix logo" class="logo-img">
+                </div>
+                <h2>Growvix</h2>
+            </div>
+            <ul class="nav-links">
+                
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="contact.html" class="nav-link cta-btn">Contact Us</a></li>
+                <li><a href="home.html#robotWelcome" class="nav-link exit-btn">Back to Robot 🤖</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="experience-page">
+        <div class="experience-page-content">
+            <h1>Our Expertise</h1>
+            <div class="experience-intro">
+                <p>With years of hands-on experience, we've mastered the art of digital marketing across multiple disciplines.</p>
+            </div>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-number">01</div>
+                    <h3>SEO & SEM</h3>
+                    <p>Drive organic and paid traffic with our proven strategies that have helped clients achieve top rankings.</p>
+                    <ul>
+                        <li>Keyword Research & Analysis</li>
+                        <li>On-Page Optimization</li>
+                        <li>Link Building</li>
+                        <li>PPC Management</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-number">02</div>
+                    <h3>Social Media Management</h3>
+                    <p>Build engaged communities and create viral content that resonates with your target audience.</p>
+                    <ul>
+                        <li>Community Management</li>
+                        <li>Content Creation</li>
+                        <li>Influencer Partnerships</li>
+                        <li>Social Analytics</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-number">03</div>
+                    <h3>Content Creation</h3>
+                    <p>Compelling storytelling that engages, educates, and converts your audience into loyal customers.</p>
+                    <ul>
+                        <li>Blog Writing</li>
+                        <li>Video Production</li>
+                        <li>Copywriting</li>
+                        <li>Graphic Design</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-number">04</div>
+                    <h3>Web Design & Development</h3>
+                    <p>Beautiful, responsive websites that not only look great but convert visitors into customers.</p>
+                    <ul>
+                        <li>Responsive Design</li>
+                        <li>UX/UI Design</li>
+                        <li>E-Commerce</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-number">05</div>
+                    <h3>Email Marketing</h3>
+                    <p>Personalized email campaigns that nurture leads and boost customer retention and lifetime value.</p>
+                    <ul>
+                        <li>Campaign Design</li>
+                        <li>Automation</li>
+                        <li>Segmentation</li>
+                        <li>Performance Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-number">06</div>
+                    <h3>Brand Strategy</h3>
+                    <p>Develop strong, distinctive brands that stand out in competitive markets and build loyalty.</p>
+                    <ul>
+                        <li>Brand Positioning</li>
+                        <li>Identity Design</li>
+                        <li>Messaging Strategy</li>
+                        <li>Market Research</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h2>Why We're Experts</h2>
+                <p>Our team brings together diverse talents and perspectives, each with specialized expertise in their respective domains. We've worked with startups, SMEs, and large enterprises across various industries.</p>
+                
+                <h3 style="color: #fff; margin-top: 2rem;">Our Core Competencies</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>📊 Analytics</h4>
+                        <p>Data-driven decision making</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>🎨 Design</h4>
+                        <p>Creative visual solutions</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>💻 Technology</h4>
+                        <p>Latest marketing tools</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>🎯 Strategy</h4>
+                        <p>Proven methodologies</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>📱 Mobile</h4>
+                        <p>Mobile-first approach</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>🌍 Global</h4>
+                        <p>International experience</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h2>Our Process</h2>
+                <p>We follow a proven process that ensures consistency, quality, and measurable results for every project:</p>
+                <ol style="color: rgba(230,238,252,0.85); line-height: 2;">
+                    <li><strong>Discovery:</strong> We understand your business, goals, and challenges</li>
+                    <li><strong>Strategy:</strong> We develop a comprehensive, data-backed strategy</li>
+                    <li><strong>Execution:</strong> We implement with precision and creativity</li>
+                    <li><strong>Monitoring:</strong> We track performance and optimize continuously</li>
+                    <li><strong>Reporting:</strong> We provide transparent, actionable insights</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Growvix</h4>
+                    <p>Leading digital marketing agency specializing in transforming businesses through innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Growvix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

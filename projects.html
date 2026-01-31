@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Growvix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .projects-page {
+            background: radial-gradient(circle at 20% 80%, rgba(102,126,234,0.1), transparent 20%),
+                        linear-gradient(135deg, #0f1724 0%, #1f2340 50%, #2b1b3b 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 88px;
+            color: #e6eefc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects-page::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245,87,108,0.15), transparent 40%);
+            right: -100px;
+            top: -100px;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .projects-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .projects-page-content h1 {
+            font-size: 3.2rem;
+            color: white;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: rgba(230,238,252,0.8);
+            font-size: 1.05rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: transparent;
+        }
+
+        .filter-btn:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card-detail {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            color: #e6eefc;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .project-card-detail:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 16px 48px rgba(102,126,234,0.25);
+            border-color: rgba(102,126,234,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.08));
+        }
+
+        .project-content {
+            padding: 1.8rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            color: rgba(230,238,252,0.6);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: rgba(230,238,252,0.85);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(230,238,252,0.6);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .projects-page-content h1 {
+                font-size: 2rem;
+            }
+
+            .projects-intro p {
+                font-size: 1rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .project-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .project-stats {
+                gap: 0.8rem;
+            }
+
+            .stat {
+                padding: 0.8rem;
+            }
+
+            .stat-value {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-page {
+                padding-top: 70px;
+            }
+
+            .projects-page-content h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .projects-intro p {
+                font-size: 0.95rem;
+            }
+
+            .filter-buttons {
+                gap: 0.3rem;
+                margin-bottom: 2rem;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .projects-grid {
+                gap: 1.5rem;
+            }
+
+            .project-card-detail {
+                border-radius: 10px;
+            }
+
+            .project-image {
+                height: 180px;
+                font-size: 2rem;
+            }
+
+            .project-content {
+                padding: 1.2rem;
+            }
+
+            .project-content h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .project-meta {
+                font-size: 0.85rem;
+            }
+
+            .project-description {
+                font-size: 0.9rem;
+            }
+
+            .project-stats {
+                grid-template-columns: 1fr;
+                margin: 1rem 0;
+            }
+
+            .stat {
+                padding: 0.8rem;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .tag {
+                padding: 4px 10px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">
+            <span class="loading-percentage">0</span>%
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon image-only">
+                    <img src="assets/growvix-logo.png" alt="Growvix logo" class="logo-img">
+                </div>
+                <h2>Growvix</h2>
+            </div>
+            <ul class="nav-links">
+                
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="contact.html" class="nav-link cta-btn">Contact Us</a></li>
+                <li><a href="home.html#robotWelcome" class="nav-link exit-btn">Back to Robot 🤖</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="projects-page">
+        <div class="projects-page-content">
+            <h1>Our Projects</h1>
+            <div class="projects-intro">
+                <p>Explore our portfolio of successful campaigns and projects that have transformed businesses and driven remarkable results.</p>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="seo">SEO</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card-detail" data-category="web">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🛍️</div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <div class="project-meta">Web Design & Development</div>
+                        <p class="project-description">Complete redesign and development of an e-commerce platform resulting in improved user experience and increased conversions.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-value">250%</div>
+                                <div class="stat-label">Sales Growth</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">45%</div>
+                                <div class="stat-label">Lower Bounce Rate</div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Responsive Design</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card-detail" data-category="seo">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📈</div>
+                    <div class="project-content">
+                        <h3>SEO Optimization</h3>
+                        <div class="project-meta">Search Engine Optimization</div>
+                        <p class="project-description">Comprehensive SEO strategy that significantly improved organic visibility and established top rankings for high-value keywords.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-value">15</div>
+                                <div class="stat-label">Top Rankings</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">300%</div>
+                                <div class="stat-label">Traffic Growth</div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Keyword Research</span>
+                            <span class="tag">Link Building</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card-detail" data-category="social">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">📱</div>
+                    <div class="project-content">
+                        <h3>Social Media Campaign</h3>
+                        <div class="project-meta">Social Media Management</div>
+                        <p class="project-description">Strategic social media campaign that generated massive engagement and built a loyal online community for our client.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-value">500K+</div>
+                                <div class="stat-label">Impressions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">50K+</div>
+                                <div class="stat-label">Engagements</div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Content Strategy</span>
+                            <span class="tag">Community Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card-detail" data-category="web">
+                    <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🎨</div>
+                    <div class="project-content">
+                        <h3>Brand Website Redesign</h3>
+                        <div class="project-meta">Web Design & Branding</div>
+                        <p class="project-description">Complete brand website overhaul with modern design principles, resulting in higher conversions and improved brand perception.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-value">180%</div>
+                                <div class="stat-label">Conversions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">4.8/5</div>
+                                <div class="stat-label">User Rating</div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Branding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card-detail" data-category="seo">
+                    <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">📚</div>
+                    <div class="project-content">
+                        <h3>Content Marketing Strategy</h3>
+                        <div class="project-meta">Content Creation & SEO</div>
+                        <p class="project-description">Strategic content marketing initiative that established thought leadership and drove sustainable organic growth.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-value">300%</div>
+                                <div class="stat-label">Traffic Growth</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">120</div>
+                                <div class="stat-label">Articles Published</div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Blog Strategy</span>
+                            <span class="tag">SEO Content</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card-detail" data-category="social">
+                    <div class="project-image" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">⭐</div>
+                    <div class="project-content">
+                        <h3>Influencer Collaboration</h3>
+                        <div class="project-meta">Influencer Marketing</div>
+                        <p class="project-description">Strategic partnerships with relevant influencers to amplify brand reach and establish authentic connections with target audience.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-value">10+</div>
+                                <div class="stat-label">Influencers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2M+</div>
+                                <div class="stat-label">Reach</div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Partnerships</span>
+                            <span class="tag">Authentic Content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Growvix</h4>
+                    <p>Leading digital marketing agency specializing in transforming businesses through innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Growvix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

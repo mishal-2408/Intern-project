@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Growvix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .feedback-page {
+            background: radial-gradient(circle at 30% 70%, rgba(118,75,162,0.1), transparent 20%),
+                        linear-gradient(135deg, #0f1724 0%, #1f2340 50%, #2b1b3b 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 88px;
+            color: #e6eefc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feedback-page::before {
+            content: '';
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245,87,108,0.12), transparent 40%);
+            right: -120px;
+            top: -80px;
+            filter: blur(75px);
+            z-index: 0;
+        }
+
+        .feedback-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feedback-page-content h1 {
+            font-size: 3.2rem;
+            color: white;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .feedback-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: rgba(230,238,252,0.8);
+            font-size: 1.05rem;
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feedback-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border-top: 2px solid rgba(102,126,234,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            color: #e6eefc;
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(102,126,234,0.2);
+            border-color: rgba(102,126,234,0.15);
+        }
+
+        .feedback-header {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .client-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .client-info h3 {
+            color: #fff;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .client-info p {
+            color: rgba(230,238,252,0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .feedback-rating {
+            color: #ffc107;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-text {
+            color: #666;
+            line-height: 1.8;
+            font-style: italic;
+            margin: 0;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .highlight-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+        }
+
+        .highlight-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-section p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .feedback-page-content h1 {
+                font-size: 2rem;
+            }
+
+            .feedback-intro {
+                font-size: 1rem;
+            }
+
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-card {
+                padding: 1.8rem;
+            }
+
+            .client-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .feedback-text {
+                padding: 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .highlight-section {
+                padding: 2rem;
+            }
+
+            .highlight-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feedback-page {
+                padding-top: 70px;
+            }
+
+            .feedback-page-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .feedback-intro {
+                font-size: 0.95rem;
+            }
+
+            .feedback-grid {
+                gap: 1.5rem;
+            }
+
+            .feedback-card {
+                padding: 1.5rem;
+                border-top: 3px solid #667eea;
+            }
+
+            .feedback-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .client-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin: 0 auto;
+            }
+
+            .client-info h3 {
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .client-info p {
+                font-size: 0.85rem;
+            }
+
+            .feedback-rating {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .feedback-text {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .highlight-section {
+                padding: 1.5rem;
+            }
+
+            .highlight-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .highlight-section p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-container">
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="loading-text">
+            <span class="loading-percentage">0</span>%
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon image-only">
+                    <img src="assets/growvix-logo.png" alt="Growvix logo" class="logo-img">
+                </div>
+                <h2>Growvix</h2>
+            </div>
+            <ul class="nav-links">
+                
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="contact.html" class="nav-link cta-btn">Contact Us</a></li>
+                <li><a href="home.html#robotWelcome" class="nav-link exit-btn">Back to Robot 🤖</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="feedback-page">
+        <div class="feedback-page-content">
+            <h1>Client Feedback</h1>
+            <div class="feedback-intro">
+                <p>Hear directly from our clients about their experience working with Growvix</p>
+            </div>
+
+            <div class="feedback-grid">
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="client-avatar">🎯</div>
+                        <div class="client-info">
+                            <h3>Tech Startup Inc.</h3>
+                            <p>Product Launch Campaign</p>
+                        </div>
+                    </div>
+                    <div class="feedback-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="feedback-text">"Growvix completely transformed our product launch strategy. Their creative approach, combined with data-driven insights, resulted in exceeding our targets by 150%. The team's dedication and responsiveness were exceptional. We highly recommend them for any digital marketing needs!"</p>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="client-avatar">🛍️</div>
+                        <div class="client-info">
+                            <h3>Fashion Boutique</h3>
+                            <p>Brand Redesign Project</p>
+                        </div>
+                    </div>
+                    <div class="feedback-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="feedback-text">"The team's creativity and attention to detail were remarkable. They understood our brand vision and brought it to life beautifully. Our website now resonates with our target audience like never before, and we've seen a significant increase in customer engagement."</p>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="client-avatar">💼</div>
+                        <div class="client-info">
+                            <h3>Corporate Solutions</h3>
+                            <p>Website Optimization</p>
+                        </div>
+                    </div>
+                    <div class="feedback-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="feedback-text">"Working with Growvix was seamless from start to finish. Their strategic approach to web optimization improved our conversion rates significantly. They provided excellent support and kept us informed throughout the entire project."</p>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="client-avatar">🏢</div>
+                        <div class="client-info">
+                            <h3>E-Commerce Giant</h3>
+                            <p>SEO & SEM Strategy</p>
+                        </div>
+                    </div>
+                    <div class="feedback-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="feedback-text">"The SEO and SEM strategies implemented by Growvix have been game-changing for our business. We achieved top rankings for all our target keywords within 6 months. Their expertise and professionalism are unmatched."</p>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="client-avatar">📱</div>
+                        <div class="client-info">
+                            <h3>SaaS Company</h3>
+                            <p>Content Marketing</p>
+                        </div>
+                    </div>
+                    <div class="feedback-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="feedback-text">"Growvix's content marketing strategy has been instrumental in establishing our company as a thought leader in our industry. The quality of content and the results we've achieved have exceeded all expectations."</p>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="client-avatar">🎓</div>
+                        <div class="client-info">
+                            <h3>Education Institute</h3>
+                            <p>Social Media Campaign</p>
+                        </div>
+                    </div>
+                    <div class="feedback-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="feedback-text">"Outstanding work on our social media campaigns. Growvix created engaging content that truly resonated with our student community. Their understanding of our target audience was impressive, and the engagement rates proved it."</p>
+                </div>
+            </div>
+
+            <div class="highlight-section">
+                <h2>What Our Clients Say About Us</h2>
+                <p><strong>Quality:</strong> Our clients consistently praise the quality of our work and the attention to detail we bring to every project. We don't compromise on excellence.</p>
+                <p><strong>Communication:</strong> We maintain transparent and regular communication with our clients. You'll always know what we're doing and why we're doing it.</p>
+                <p><strong>Results:</strong> Most importantly, our clients see real, measurable results. We're not interested in vanity metrics—we focus on what matters to your business.</p>
+                <p><strong>Partnership:</strong> We treat our clients as partners, not just customers. Your success is our success, and we're committed to helping you achieve your goals.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Growvix</h4>
+                    <p>Leading digital marketing agency specializing in transforming businesses through innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Growvix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
